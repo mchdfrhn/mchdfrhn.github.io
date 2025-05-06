@@ -10,7 +10,7 @@ export type MotionProps = HTMLMotionProps<"div"> & {
 export const Motion = forwardRef<HTMLDivElement, MotionProps>(
   ({ children, ...props }, ref) => {
     return (
-      <motion.div ref={ref} {...props}>
+      <motion.div ref={ref as any} {...props}>
         {children}
       </motion.div>
     );
