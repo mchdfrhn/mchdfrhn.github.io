@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 
 interface Skill {
@@ -37,11 +36,15 @@ export function SkillCard({ title, skills, className }: SkillCardProps) {
                 {animatedSkills[skill.name] ? `${skill.level}%` : "0%"}
               </p>
             </div>
-            <Progress 
-              value={animatedSkills[skill.name] ? skill.level : 0} 
-              className="h-2 transition-all duration-1000 ease-out"
-              onMouseEnter={() => handleAnimationStart(skill.name)}
-            />
+            <div className="h-2 w-full bg-secondary overflow-hidden rounded-full">
+              <div
+                className="h-full bg-primary transition-all duration-1000 ease-out"
+                style={{ 
+                  width: animatedSkills[skill.name] ? `${skill.level}%` : "0%" 
+                }}
+                onMouseEnter={() => handleAnimationStart(skill.name)}
+              />
+            </div>
           </div>
         ))}
       </CardContent>
